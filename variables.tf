@@ -13,18 +13,20 @@
 
 variable "aws_region" {
   description = "The AWS region to start this aws-instance within"
+  default = "ap-northeast-2"
 }
 
-variable "aws_access_key_id" {
-  description = "Your AWS API key."
-}
+#variable "aws_access_key_id" {
+#  description = "Your AWS API key."
+#}
 
-variable "aws_secret_access_key" {
-  description = "Your AWS API secret key."
-}
+#variable "aws_secret_access_key" {
+#  description = "Your AWS API secret key."
+#}
 
 variable "opnsense_release" {
   description = "The OPNsense release to target for this image build"
+  default = "18.7.0"
 }
 
 # variables - with defined defaults
