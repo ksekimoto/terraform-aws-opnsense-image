@@ -28,8 +28,6 @@ resource "null_resource" "local-tests" {
         echo 'awscli tool not installed on this system'
         exit 1
       else
-        #export AWS_ACCESS_KEY_ID=${var.aws_access_key_id}
-        #export AWS_SECRET_ACCESS_KEY=${var.aws_secret_access_key}
         aws --region=${var.aws_region} ec2 describe-regions > /dev/null
       fi
       if [ $? -gt 0 ]; then
