@@ -26,7 +26,7 @@ resource "null_resource" "local-tests" {
         echo 'awscli tool not installed on this system'
         exit 1
       else
-        aws --region=var.aws_region ec2 describe-regions > /dev/null
+        aws --region="${var.aws_region}" ec2 describe-regions > /dev/null
       fi
       if [ $? -gt 0 ]; then
         echo 'problem using awscli tools to confirm access'
@@ -291,7 +291,7 @@ resource "null_resource" "instance-wait-poweroff" {
 
   provisioner "local-exec" {
     command = <<EOF
-      while [ $(aws --region=var.aws_region ec2 describe-instance-status --instance-ids ${aws_instance.build-instance.id} | jq -r .InstanceStatuses[0].InstanceState.Name) = 'running' ]; do
+      while [ $(aws --region="${var.aws_region}" ec2 describe-instance-status --instance-ids ${aws_instance.build-instance.id} | jq -r .InstanceStatuses[0].InstanceState.Name) = 'running' ]; do
           echo 'Waiting for instance ${aws_instance.build-instance.id} to stop running...'
           sleep 3
       done
