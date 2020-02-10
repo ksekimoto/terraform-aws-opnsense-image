@@ -196,3 +196,55 @@ Module managed by [Verb Networks](https://github.com/verbnetworks).
 
 ## License
 Apache 2 Licensed. See LICENSE file for full details.
+
+# Build using CodeCommit and CodeBuild
+
+## Project configuration
+- Project name: aws-opnsense-image
+
+## Source
+### Source1
+- Source provider: AWS CodeComit or Github
+- Repository: terraform-aws-opnsense-image
+- Reference type: Branch
+- Branch: dev
+- Source role permissions
+  Allow AWS CodeBuild to modify this service role so it can be used with this build project
+  arn:aws:iam::xxxxxxxxxxxx:role/service-role/codebuild-aws-opnsense-image
+
+## Environment
+- Current environment image:aws/codebuild/amazonlinux2-x86_64-standard:2.0
+- Service role permissions
+- Allow AWS CodeBuild to modify this service role so it can be used with this build project
+  arn:aws:iam::xxxxxxxxxxxx:role/service-role/codebuild-aws-opnsense-image
+
+  need to attach AWSEC2Full and AWSS3Full
+
+## Buildspec
+- Current buildspec: Using the buildspec.yml in the source code root directory
+- Build specifications: Use a buildspec file
+- Buildspec name: optional
+
+## Artifacts
+### Artifact1 - Primary
+- Type: Amazon S3
+- Bucket name: xxxxxxxxxxxx
+- Enable semantic versioning: no check
+- Path: optional
+- Namespace type:  optional
+- Artifact packaging: Zip
+- Disable artifact encryption: no check
+- Service role permissions
+- Allow AWS CodeBuild to modify this service role so it can be used with this build project
+  arn:aws:iam::xxxxxxxxxxxx:role/service-role/codebuild-aws-opnsense-image
+
+## Logs
+### CloudWatch
+- CloudWatch logs: check
+- Group Name: 
+- Stream name:
+### S3
+S3 logs: optional
+- Service role permissions
+- Allow AWS CodeBuild to modify this service role so it can be used with this build project
+  arn:aws:iam::xxxxxxxxxxxx:role/service-role/codebuild-aws-opnsense-image
