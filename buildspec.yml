@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     TF_VERSION: "0.12.20"
-    TF_ACTION: "apply"
+    TF_ACTION: "apply -auto-approve"
 #    key: "value"
 
 phases:
