@@ -13,7 +13,7 @@
 
 variable "aws_region" {
   description = "The AWS region to start this aws-instance within"
-#  default     = "ap-northeast-2"
+  default     = "ap-northeast-1"
 }
 
 #variable "aws_access_key_id" {
